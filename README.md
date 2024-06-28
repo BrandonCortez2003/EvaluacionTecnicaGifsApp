@@ -1,6 +1,7 @@
 # PruebaTecnica
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.14.
+![](https://github.com/BrandonCortez2003/EvaluacionTecnicaGifsApp/blob/main/prueba1.png) ![](https://github.com/BrandonCortez2003/EvaluacionTecnicaGifsApp/blob/main/prueba2.png)
 
 ## Development server
 
