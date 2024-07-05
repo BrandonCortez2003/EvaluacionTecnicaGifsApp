@@ -14,6 +14,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule} from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 
 @NgModule({
     exports:[
@@ -32,7 +35,8 @@ import { MatCardModule } from '@angular/material/card';
         MatDatepickerModule,
         MatNativeDateModule ,
         MatCardModule,
-    ]
+    ],
+ 
 })
 export class AppMaterialModule{
 

@@ -1,0 +1,40 @@
+<!-- Botón para mostrar el sidebar en dispositivos móviles -->
+<button id="mobile-menu-toggle" class="fixed top-4 right-4 z-50 p-2 bg-green-600 hover:bg-green-400 text-white rounded-md xl:hidden">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+    </svg>
+  </button>
+  
+  
+
+  <aside id="sidebar" class="bg-gradient-to-br from-gray-800 to-gray-900 -translate-x-80 fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0">
+    <div class="relative border-b border-white/20">
+      <a class="flex items-center gap-1 py-6 px-6 pb-1">
+        <h1 style="font-size: 50px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed  uppercase text-white">GIFSAPP</h1> 
+        
+    </a>
+    <div class="p-4">
+        <img class="rounded-lg  w-50 flex justify-center" src="https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2016/10/giphy.gif?fit=400%2C234&quality=50&strip=all&ssl=1" alt="">
+    </div>
+      <button id="close-sidebar" class="middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-white hover:bg-white/10 active:bg-white/30 absolute right-0 top-0 grid rounded-br-none rounded-tl-none xl:hidden" type="button">
+        <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
+        
+        </span>
+      </button>
+    </div>
+    <div class="m-4">
+      <ul class="flex flex-col gap-3">
+        <li *ngFor="let search of searchHistory">
+          <button style="text-align: left;" (click)="manejarHistorialClick(search)" class="text-sm p py-3 px-9 w-full text-white bg-gray-700 hover:bg-gray-600 active:bg-gray-800 rounded-lg transition-all">
+            {{ search }}
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <div class="m-4">
+        <button (click)="limpiarHistorial()" class="text-sm py-3 px-9 w-full text-white bg-green-600 hover:bg-green-500 active:bg-red-700 rounded-lg transition-all">
+          Limpiar Historial
+        </button>
+      </div>
+  </aside>

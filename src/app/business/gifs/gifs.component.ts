@@ -3,23 +3,31 @@ import { AppMaterialModule } from '../../app.material.module';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { GifsService } from 'src/app/services/api-gifs.service';
+import { HistorialGifsService } from '../../services/historial-gifs.service';
 
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [AppMaterialModule,FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './gifs.component.html',
   styleUrls: ['./gifs.component.css']
 })
-export default class DashboardComponent implements OnInit {
+export default class DashboardComponent  {
   gifs: any[] = [];
   searchHistory: string[] = [];
   searchQuery: string = '';
   
 
 
-  constructor(private gifsService: GifsService) { }
+  constructor(private gifsService: GifsService, private historialGifsService :HistorialGifsService ) { 
+
+    this.historialGifsService.searchQuerySelected.subscribe(query => {
+      this.searchQuery = query;
+      this.buscarGifs(query); // Realizar búsqueda cuando se selecciona del historial
+    });
+
+  }
 
   ngOnInit() {
     this.gifsService.listarGifsPopulares().subscribe(
@@ -31,8 +39,6 @@ export default class DashboardComponent implements OnInit {
         console.error('Error al obtener los GIFs:', error);
       }
     );
-
-    this.cargarBuscarHistorial();
   }
 
 
@@ -46,38 +52,12 @@ export default class DashboardComponent implements OnInit {
       (response) => {
         console.log(response);
         this.gifs = response.data;
-        this.agregarHistorialBusqueda(query);
+        this.historialGifsService.addToSearchHistory(query);
       },
       (error) => {
         console.error('Error al buscar GIFs:', error);
       }
     );
-  }
-  private agregarHistorialBusqueda(query: string) {
-    if (!this.searchHistory.includes(query)) {
-      this.searchHistory.push(query);
-      localStorage.setItem('searchHistory', JSON.stringify(this.searchHistory));
-    }
-  }
-
-  private cargarBuscarHistorial() {
-    const history = localStorage.getItem('searchHistory');
-    if (history) {
-      this.searchHistory = JSON.parse(history);
-    }
-  }
-
-
-  // Método para mostrar en el campo de busqueda
-  //el nombre del historial seleccionado
-  manejarHistorialClick(query: string) {
-    this.searchQuery = query; 
-    this.buscarGifs(query); 
-  }
-
-  limpiarHistorial() {
-    this.searchHistory = [];
-    localStorage.removeItem('searchHistory');
   }
   
 }

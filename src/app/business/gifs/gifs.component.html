@@ -1,40 +1,12 @@
-<aside class="bg-gradient-to-br from-gray-800 to-gray-900 -translate-x-80 fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0">
-  <div class="relative border-b border-white/20">
-    <a class="flex items-center gap-1 py-6 px-6 pb-1" href="#/">
-      <h1 class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-white">GifsApp</h1> 
-    </a>
-  
-    <button class="middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-white hover:bg-white/10 active:bg-white/30 absolute right-0 top-0 grid rounded-br-none rounded-tl-none xl:hidden" type="button">
-      <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true" class="h-5 w-5 text-white">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-      </span>
-    </button>
-  </div>
-  <div class="m-4">
-    <ul class="flex flex-col gap-3">
-      <li *ngFor="let search of searchHistory">
-        <button style="text-align: left;" (click)="buscarGifs(search)" class="text-sm p py-3 px-9 w-full text-white bg-gray-700 hover:bg-gray-600 active:bg-gray-800 rounded-lg transition-all">
-          {{ search }}
-        </button>
-      </li>
-    </ul>
-   
-    <!-- Botón para limpiar historial -->
-    <button (click)="limpiarHistorial()" style="margin-top: 600px;" class="text-sm p py-3 px-9 w-full mt-4 text-white bg-red-600 hover:bg-red-500 active:bg-red-700 rounded-lg transition-all">
-      Limpiar Historial
-    </button>
-  </div>
-</aside>
 
-<div class="flex flex-col-reverse justify-between gap-6 md:flex-row md:items-center">
+<div class="flex flex-col-reverse ml-10 justify-between gap-6 md:flex-row md:items-center">
   <div class="flex items-center">
     <div class="mr-auto md:mr-4 md:w-80">
-      <h2 style="color: black; font-family: 'Courier New', Courier, monospace;">BUSCAR:</h2>
-      <div class="relative w-full min-w-[200px] h-10 flex">
-        <input [(ngModel)]="searchQuery" class="peer flex-grow w-full h-full bg-transparent text-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-blue-gray-200 focus:border-blue-500" placeholder="Buscar gifs....">
-        <button style="height: 100%; background-color: skyblue;" mat-raised-button type="button" (click)="buscarGifs(searchQuery)">Buscar</button>
+      <h1 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 40px;" class="text-green-700 h-10 dark:text-white font-sans">BUSCAR:</h1>
+      <div class="relative w-full min-w-[200px] gap-6 h-10 flex">
+        <input [(ngModel)]="searchQuery" class="flex-grow w-full h-full bg-transparent text-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-blue-gray-200 focus:border-gray-500 text-black dark:text-white font-sans" 
+        placeholder="Buscar gifs...">
+        <button class="bg-green-500 rounded-lg h-10 mb-3 p-3 flex items-center hover:bg-green-500 active:bg-green-400 " (click)="buscarGifs(searchQuery)">Buscar</button><!-- focus:outline-none focus:ring focus:ring-violet-300-->
       </div>
   
     </div>
@@ -53,6 +25,6 @@
     </div>
   </div>
 </div>
-<ng-template #noGifs>
-  <p>No se encontraron GIFs.</p>
+<ng-template #noGifs >
+  <p >No se encontraron GIFs.</p>
 </ng-template>

@@ -53,3 +53,14 @@
     padding: 8px;
   }
 }
+
+
+input::placeholder {
+  color: #b0b0b0; /* Color del placeholder en modo claro */
+}
+
+@media (prefers-color-scheme: dark) {
+  input::placeholder {
+    color: #f5f5f5; /* Color del placeholder en modo oscuro */
+  }
+}
